@@ -1,0 +1,60 @@
+Metadata-Version: 2.4
+Name: matrix_utils_demo
+Version: 0.1.0
+Summary: A simple demo package for generating matrices.
+Author-email: Wenwen Li <wenwenli@bu.edu>
+Project-URL: Homepage, https://github.com/AlyssaLi2022/peer_to_peer_system
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=1.20
+Dynamic: license-file
+
+# Simple P2P Chat
+
+## What This Program Does
+
+This is a basic chat program where two people can talk to each other over a network. It uses Python's `socket` for network connection and `threading` to handle messages at the same time. Each user's program can act as a server to listen for connections and as a client to connect to others.
+
+## How to Run
+
+**Steps**:
+
+1.  **Get the code**: Save the `peer.py` file to your computer.
+2.  **Start Peer 1 (the first user, acts as a server first)**:
+    *   Open a terminal (command prompt).
+    *   Go to the folder where you saved `peer.py`.
+    *   Run: `python peer.py`
+    *   When it asks `Which peer instance is this...?`, type `1` and press Enter. (This peer will listen on port 8888).
+    *   When it asks `Do you want to (c)onnect..., (s)end message, or (e)xit?`, you can just press Enter or type `s`. Peer 1 will now wait for Peer 2 to connect.
+
+3.  **Start Peer 2 (the second user, connects to Peer 1)**:
+    *   Open a **new, separate** terminal.
+    *   Go to the folder where you saved `peer.py`.
+    *   Run: `python peer.py`
+    *   When it asks `Which peer instance is this...?`, type `2` and press Enter. (This peer will listen on port 8889).
+    *   When it asks `Do you want to (c)onnect..., (s)end message, or (e)xit?`, type `c` and press Enter.
+    *   When it asks `Enter peer address (IP,Port)...:`, type `127.0.0.1,8888` (if Peer 1 is on the same computer) and press Enter.
+    *   After it connects, it will ask `Do you want to (c)onnect...` again. Type `s` (or just press Enter) to start chatting.
+
+4.  **Chat**:
+    *   Both terminals should now show `💬 You:`.
+    *   Type a message in one terminal and press Enter. It should appear in the other terminal.
+
+5.  **Exit**:
+    *   To close the chat for one user, type `exit` where it says `💬 You:` and press Enter.
+
+## Features
+
+*   **Client and Server**: Each user's program can be both.
+*   **Sockets**: Uses Python sockets for talking over the network.
+*   **Async Messages**: Uses threads so you can send and receive messages without waiting.
+*   **Handles Multiple Connections**: The server part can listen to more than one client (though this guide focuses on two users).
+*   **Basic Error Handling**: Tries to handle some common network problems.
+*   **Thread Safety**: Uses a lock to safely manage the list of connected users.
+
+## (Optional) Known Issues
+*   If a user tries to connect to the same peer multiple times by choosing 'c' repeatedly, it will create multiple connections. Users should choose 's' to chat after the first successful connection to a peer.

@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+matrix_utils/__init__.py
+matrix_utils/generator.py
+matrix_utils_demo.egg-info/PKG-INFO
+matrix_utils_demo.egg-info/SOURCES.txt
+matrix_utils_demo.egg-info/dependency_links.txt
+matrix_utils_demo.egg-info/requires.txt
+matrix_utils_demo.egg-info/top_level.txt
